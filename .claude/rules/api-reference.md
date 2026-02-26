@@ -68,6 +68,44 @@ These resources exist at different levels: `account`, `environment`, or `global`
 path = f"/repo/environment/{environment_id}/policies"
 ```
 
+### Parameterized Policies (Bind Parameters)
+
+Policies can use `${bindParam:name}` placeholders in `statementQuery`. Parameter values
+are supplied when binding the policy to a group.
+
+**Policy example:**
+```
+ALLOW storage:logs:read WHERE storage:dt.security_context = "${bindParam:sec_context}";
+```
+
+**Binding payload with parameters:**
+```json
+POST /iam/v1/repo/{level}/{id}/bindings/{policyUuid}
+{
+  "groups": ["group-uuid"],
+  "boundaries": [],
+  "parameters": {
+    "sec_context": "Production",
+    "project_id": "123"
+  }
+}
+```
+
+**Binding response includes parameters:**
+```json
+{
+  "policyBindings": [{
+    "policyUuid": "...",
+    "groups": ["..."],
+    "boundaries": ["..."],
+    "parameters": {"sec_context": "Production"}
+  }]
+}
+```
+
+Comma-separated values assign multiple values to a single parameter:
+`{"zones": "zone1,zone2,zone3"}`
+
 ## App Engine Registry Endpoints
 
 | Resource | Path | ID Field |

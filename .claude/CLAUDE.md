@@ -42,7 +42,7 @@ ruff check src/dtiam
 
 **dtiam** is a kubectl-inspired CLI for managing Dynatrace Identity and Access Management (IAM) resources: groups, users, policies, bindings, boundaries, environments, and service users.
 
-**Current Version:** 3.12.0 (in `pyproject.toml` and `src/dtiam/__init__.py`)
+**Current Version:** 3.13.0 (in `pyproject.toml` and `src/dtiam/__init__.py`)
 
 ## Project Structure
 

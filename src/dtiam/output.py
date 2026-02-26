@@ -252,6 +252,12 @@ def binding_columns() -> list[Column]:
         Column("policyUuid", "POLICY UUID"),
         Column("levelType", "LEVEL TYPE"),
         Column("levelId", "LEVEL ID"),
+        Column(
+            "parameters",
+            "PARAMETERS",
+            wide_only=True,
+            formatter=lambda x: ", ".join(f"{k}={v}" for k, v in x.items()) if isinstance(x, dict) and x else "",
+        ),
     ]
 
 

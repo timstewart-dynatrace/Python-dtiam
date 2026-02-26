@@ -7,7 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-No unreleased changes yet.
+### Added
+- **Bind parameters for parameterized policies** - Support for `${bindParam:...}` policy templates
+  - `--param KEY=VALUE` option on `create binding` command (repeatable for multiple parameters)
+  - Parameters displayed in wide table output and JSON/YAML output for `get bindings`
+  - `describe policy` now detects and displays bind parameters with usage hints
+  - Bulk operations (`create-bindings`, `create-groups-with-policies`) support `parameters` field
+  - Template apply passes `parameters` from spec when creating bindings
+  - New `dtiam.utils.bind_params` utility module for parameter extraction and validation
 
 ## [3.12.0] - 2026-01-21
 

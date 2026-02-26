@@ -775,17 +775,48 @@ Create a policy binding (bind a policy to a group).
 dtiam create binding [OPTIONS]
 ```
 
-| Option       | Short | Description                      |
-| ------------ | ----- | -------------------------------- |
-| `--group`    | `-g`  | Group UUID or name (required)    |
-| `--policy`   | `-p`  | Policy UUID or name (required)   |
-| `--boundary` | `-b`  | Boundary UUID or name (optional) |
-| `--output`   | `-o`  | Output format                    |
+| Option       | Short | Description                                                 |
+| ------------ | ----- | ----------------------------------------------------------- |
+| `--group`    | `-g`  | Group UUID or name (required)                               |
+| `--policy`   | `-p`  | Policy UUID or name (required)                              |
+| `--boundary` | `-b`  | Boundary UUID or name (optional)                            |
+| `--param`    |       | Bind parameter in KEY=VALUE format (repeatable, optional)   |
+| `--output`   | `-o`  | Output format                                               |
 
-**Example:**
+**Examples:**
 
 ```bash
+# Simple binding
 dtiam create binding --group "LOB5" --policy "admin-policy"
+
+# Binding with parameters for parameterized policies
+dtiam create binding --group "LOB5" --policy "team-access" \
+  --param sec_context=Production --param project_id=123
+
+# Binding with boundary and parameters
+dtiam create binding --group "LOB5" --policy "zone-policy" \
+  --boundary "LOB5-Boundary" --param zone=LOB5
+```
+
+#### Parameterized Policies
+
+Policies using `${bindParam:name}` placeholders require parameter values when binding.
+Use `dtiam describe policy <name>` to see required bind parameters.
+
+```bash
+# View required parameters
+dtiam describe policy "team-access"
+# Output shows: Bind Parameters: (2 found)
+#   - ${bindParam:sec_context}
+#   - ${bindParam:project_id}
+
+# Bind with required parameters
+dtiam create binding --group "Team-A" --policy "team-access" \
+  --param sec_context=Production --param project_id=456
+
+# Multiple values (comma-separated in a single param)
+dtiam create binding --group "Team-A" --policy "multi-zone" \
+  --param zones=zone1,zone2,zone3
 ```
 
 ### create boundary
