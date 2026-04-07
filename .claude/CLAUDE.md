@@ -165,8 +165,6 @@ state.dry_run    # bool - dry-run mode
 |----------|------|
 | Groups | `/groups` |
 | Users | `/users` |
-| Service Users | `/service-users` |
-| Platform Tokens | `/platform-tokens` |
 | Policies | `/repo/{level}/{id}/policies` |
 | Bindings | `/repo/{level}/{id}/bindings` |
 | Boundaries | `/repo/account/{id}/boundaries` |

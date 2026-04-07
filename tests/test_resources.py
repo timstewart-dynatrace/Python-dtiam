@@ -600,6 +600,78 @@ class TestBindingHandler:
             assert result is True
             mock_put.assert_called_once()
 
+    def test_create_binding_with_parameters(self, mock_client, mock_response):
+        """Test creating a binding with bind parameters."""
+        with patch.object(mock_client, "post") as mock_post:
+            mock_post.return_value = mock_response({})
+
+            handler = BindingHandler(mock_client, "account", "abc-123")
+            handler.create(
+                group_uuid="group-1",
+                policy_uuid="policy-1",
+                boundaries=[],
+                parameters={"sec_context": "Production", "project_id": "123"},
+            )
+
+            call_args = mock_post.call_args
+            payload = call_args[1]["json"]
+            assert payload["parameters"] == {"sec_context": "Production", "project_id": "123"}
+            assert payload["groups"] == ["group-1"]
+
+    def test_create_binding_without_parameters_no_key(self, mock_client, mock_response):
+        """Test that creating a binding without parameters does not include parameters key."""
+        with patch.object(mock_client, "post") as mock_post:
+            mock_post.return_value = mock_response({})
+
+            handler = BindingHandler(mock_client, "account", "abc-123")
+            handler.create(group_uuid="group-1", policy_uuid="policy-1")
+
+            call_args = mock_post.call_args
+            payload = call_args[1]["json"]
+            assert "parameters" not in payload
+
+    def test_list_bindings_preserves_parameters(self, mock_client, mock_response):
+        """Test that list() preserves parameters from API response."""
+        bindings_with_params = [
+            {
+                "policyUuid": "policy-1",
+                "groups": ["group-1"],
+                "boundaries": [],
+                "parameters": {"sec_context": "Prod"},
+            }
+        ]
+        with patch.object(mock_client, "get") as mock_get:
+            mock_get.return_value = mock_response({"policyBindings": bindings_with_params})
+
+            handler = BindingHandler(mock_client, "account", "abc-123")
+            bindings = handler.list()
+
+            assert len(bindings) == 1
+            assert bindings[0]["parameters"] == {"sec_context": "Prod"}
+
+    def test_list_bindings_empty_parameters(self, mock_client, sample_bindings, mock_response):
+        """Test that list() returns empty dict for parameters when not in API response."""
+        with patch.object(mock_client, "get") as mock_get:
+            mock_get.return_value = mock_response({"policyBindings": sample_bindings})
+
+            handler = BindingHandler(mock_client, "account", "abc-123")
+            bindings = handler.list()
+
+            for binding in bindings:
+                assert "parameters" in binding
+                assert binding["parameters"] == {}
+
+    def test_get_policy_group_binding_with_parameters(self, mock_client, mock_response):
+        """Test that get_policy_group_binding preserves parameters."""
+        binding = {"boundaries": ["boundary-1"], "parameters": {"team": "alpha"}}
+        with patch.object(mock_client, "get") as mock_get:
+            mock_get.return_value = mock_response(binding)
+
+            handler = BindingHandler(mock_client, "account", "abc-123")
+            result = handler.get_policy_group_binding("policy-uuid", "group-uuid")
+
+            assert result["parameters"] == {"team": "alpha"}
+
 
     def test_create_binding_with_parameters(self, mock_client, mock_response):
         """Test creating a binding with bind parameters."""
