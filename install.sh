@@ -1,9 +1,9 @@
 #!/bin/bash
 
 ###############################################################################
-# Python-IAM-CLI Installation Script for macOS/Linux
+# Python-dtiam Installation Script for macOS/Linux
 # 
-# This script installs the Python-IAM-CLI tool and its dependencies.
+# This script installs the Python-dtiam tool and its dependencies.
 # 
 # Usage:
 #   chmod +x install.sh
@@ -125,7 +125,7 @@ setup_venv() {
 
 # Install the package
 install_package() {
-    print_header "Installing Python-IAM-CLI"
+    print_header "Installing Python-dtiam"
     
     # Get current directory
     SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -143,7 +143,7 @@ install_package() {
         python3 -m pip install -e "$SCRIPT_DIR"
     fi
     
-    print_success "Python-IAM-CLI installed successfully"
+    print_success "Python-dtiam installed successfully"
 }
 
 # Verify installation
@@ -164,7 +164,7 @@ verify_installation() {
 
 # Main installation flow
 main() {
-    print_header "Python-IAM-CLI Installation"
+    print_header "Python-dtiam Installation"
     
     check_python
     check_pip
@@ -189,7 +189,7 @@ main() {
     fi
     
     echo ""
-    echo "Documentation: https://github.com/timstewart-dynatrace/Python-IAM-CLI"
+    echo "Documentation: https://github.com/timstewart-dynatrace/Python-dtiam"
 }
 
 # Run main

@@ -14,6 +14,10 @@ Detailed guidelines are in separate files:
 | [rules/code-style.md](rules/code-style.md) | Code style, conventions, patterns |
 | [rules/testing.md](rules/testing.md) | Testing standards and practices |
 | [rules/security.md](rules/security.md) | Security requirements and best practices |
+| [rules/api-reference.md](rules/api-reference.md) | API endpoints, level types, response patterns |
+| [rules/authentication.md](rules/authentication.md) | OAuth2, bearer tokens, scopes, credentials |
+| [rules/configuration.md](rules/configuration.md) | Config file format, filtering, output formats |
+| [rules/troubleshooting.md](rules/troubleshooting.md) | Common issues and solutions |
 
 ## Quick Start
 
@@ -38,7 +42,7 @@ ruff check src/dtiam
 
 **dtiam** is a kubectl-inspired CLI for managing Dynatrace Identity and Access Management (IAM) resources: groups, users, policies, bindings, boundaries, environments, and service users.
 
-**Current Version:** 3.12.0 (in `pyproject.toml` and `src/dtiam/__init__.py`)
+**Current Version:** 3.13.0 (in `pyproject.toml` and `src/dtiam/__init__.py`)
 
 ## Project Structure
 
@@ -72,10 +76,16 @@ src/dtiam/
     ├── workflow.md          # Development workflow
     ├── code-style.md        # Code style guidelines
     ├── testing.md           # Testing conventions
-    └── security.md          # Security requirements
+    ├── security.md          # Security requirements
+    ├── api-reference.md     # API endpoints and patterns
+    ├── authentication.md    # OAuth2, tokens, credentials
+    ├── configuration.md     # Config file and filtering
+    └── troubleshooting.md   # Common issues
 ```
 
 ## Authentication
+
+> **Full details:** [rules/authentication.md](rules/authentication.md)
 
 **OAuth2 (Recommended)** - Auto-refreshes tokens
 ```bash
@@ -88,17 +98,6 @@ export DTIAM_ACCOUNT_UUID=your-account-uuid
 export DTIAM_BEARER_TOKEN=your-token
 export DTIAM_ACCOUNT_UUID=your-account-uuid
 ```
-
-### Environment Variables
-
-| Variable | Description |
-|----------|-------------|
-| `DTIAM_CLIENT_SECRET` | OAuth2 client secret |
-| `DTIAM_CLIENT_ID` | OAuth2 client ID (optional - auto-extracted) |
-| `DTIAM_ACCOUNT_UUID` | Dynatrace account UUID |
-| `DTIAM_BEARER_TOKEN` | Static bearer token |
-| `DTIAM_API_URL` | Custom IAM API base URL |
-| `DTIAM_CONTEXT` | Override current context |
 
 ## Key Patterns
 
@@ -158,6 +157,8 @@ state.dry_run    # bool - dry-run mode
 
 ## API Endpoints
 
+> **Full details:** [rules/api-reference.md](rules/api-reference.md)
+
 **IAM API Base:** `https://api.dynatrace.com/iam/v1/accounts/{account_uuid}`
 
 | Resource | Path |
@@ -197,12 +198,10 @@ See [rules/workflow.md](rules/workflow.md) for complete workflow details.
 
 ## Troubleshooting
 
-**"No context configured"**
-```bash
-dtiam config set-credentials NAME --client-secret dt0s01.XXX.YYY --account-uuid UUID
-dtiam config use-context NAME
-```
+> **Full details:** [rules/troubleshooting.md](rules/troubleshooting.md)
 
-**"Permission denied"** - OAuth2 client needs scopes: `account-idm-read`, `iam-policies-management`
+**"No context configured"** - Run `dtiam config set-credentials` and `dtiam config use-context`
+
+**"Permission denied"** - OAuth2 client needs appropriate scopes
 
 **Import errors** - Install in dev mode: `pip install -e .`

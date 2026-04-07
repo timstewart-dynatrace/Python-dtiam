@@ -7,7 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-No unreleased changes yet.
+## [3.13.0] - 2026-04-07
+
+### Added
+- **Bind parameters for parameterized policies** - Support for `${bindParam:...}` policy templates
+  - `--param KEY=VALUE` option on `create binding` command (repeatable for multiple parameters)
+  - Parameters displayed in wide table output and JSON/YAML output for `get bindings`
+  - `describe policy` now detects and displays bind parameters with usage hints
+  - Bulk operations (`create-bindings`, `create-groups-with-policies`) support `parameters` field
+  - Template apply passes `parameters` from spec when creating bindings
+  - New `dtiam.utils.bind_params` utility module for parameter extraction and validation
+- **Consolidated from Python-IAM-CLI project** - All functionality merged into this repository
+  - Added `.claude/rules/` documentation: api-reference, authentication, configuration, troubleshooting
+  - Added installation scripts (`install.sh`, `install.bat`) for automated setup
+  - Added `INSTALLATION.md` and `RELEASES.md` guides
+  - Added `.githooks/pre-commit` for version consistency enforcement
 
 ## [3.12.0] - 2026-01-21
 

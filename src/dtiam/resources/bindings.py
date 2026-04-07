@@ -74,6 +74,7 @@ class BindingHandler(ResourceHandler[Any]):
                             "policyUuid": policy_uuid,
                             "groupUuid": group_uuid,
                             "boundaries": boundaries,
+                            "parameters": binding.get("parameters", {}),
                             "levelType": self.level_type,
                             "levelId": self.level_id,
                         })
@@ -121,6 +122,7 @@ class BindingHandler(ResourceHandler[Any]):
                         "policyUuid": binding.get("policyUuid"),
                         "groupUuid": group_id,
                         "boundaries": binding.get("boundaries", []),
+                        "parameters": binding.get("parameters", {}),
                         "levelType": self.level_type,
                         "levelId": self.level_id,
                     })
@@ -136,6 +138,7 @@ class BindingHandler(ResourceHandler[Any]):
         group_uuid: str,
         policy_uuid: str,
         boundaries: list[str] | None = None,
+        parameters: dict[str, str] | None = None,
     ) -> dict[str, Any]:
         """Create a new policy binding.
 
@@ -145,15 +148,18 @@ class BindingHandler(ResourceHandler[Any]):
             group_uuid: Group UUID to bind
             policy_uuid: Policy UUID to bind to the group
             boundaries: Optional list of boundary UUIDs
+            parameters: Optional bind parameters for parameterized policies
 
         Returns:
             Created/updated binding dictionary
         """
         # Payload contains groups and boundaries arrays
-        data = {
+        data: dict[str, Any] = {
             "groups": [group_uuid],
             "boundaries": boundaries or [],
         }
+        if parameters:
+            data["parameters"] = parameters
 
         try:
             # POST /iam/v1/repo/{levelType}/{levelId}/bindings/{policyUuid}
@@ -172,6 +178,7 @@ class BindingHandler(ResourceHandler[Any]):
         group_uuid: str,
         policy_uuid: str,
         boundaries: list[str] | None = None,
+        parameters: dict[str, str] | None = None,
     ) -> tuple[dict[str, Any], str]:
         """Create a binding or update if it exists.
 
@@ -182,15 +189,18 @@ class BindingHandler(ResourceHandler[Any]):
             group_uuid: Group UUID to bind
             policy_uuid: Policy UUID to bind to the group
             boundaries: Optional list of boundary UUIDs
+            parameters: Optional bind parameters for parameterized policies
 
         Returns:
             Tuple of (binding dictionary, action) where action is "created", "updated", or "unchanged"
         """
         # First try to create
-        data = {
+        data: dict[str, Any] = {
             "groups": [group_uuid],
             "boundaries": boundaries or [],
         }
+        if parameters:
+            data["parameters"] = parameters
 
         try:
             # POST /iam/v1/repo/{levelType}/{levelId}/bindings/{policyUuid}
@@ -356,6 +366,7 @@ class BindingHandler(ResourceHandler[Any]):
                     "policyUuid": policy_uuid,
                     "groups": groups,
                     "boundaries": boundaries,
+                    "parameters": data.get("parameters", {}),
                     "levelType": self.level_type,
                     "levelId": self.level_id,
                 }]
@@ -389,6 +400,7 @@ class BindingHandler(ResourceHandler[Any]):
                 "policyUuid": policy_uuid,
                 "groupUuid": group_uuid,
                 "boundaries": data.get("boundaries", []),
+                "parameters": data.get("parameters", {}),
                 "levelType": self.level_type,
                 "levelId": self.level_id,
             }
@@ -428,6 +440,7 @@ class BindingHandler(ResourceHandler[Any]):
                             "policyUuid": policy_uuid,
                             "groupUuid": group_uuid,
                             "boundaries": boundaries,
+                            "parameters": binding.get("parameters", {}),
                             "levelType": level_type,
                             "levelId": level_id,
                         })

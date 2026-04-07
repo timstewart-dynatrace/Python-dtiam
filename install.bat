@@ -1,8 +1,8 @@
 @echo off
 REM ###############################################################################
-REM # Python-IAM-CLI Installation Script for Windows
+REM # Python-dtiam Installation Script for Windows
 REM # 
-REM # This script installs the Python-IAM-CLI tool and its dependencies.
+REM # This script installs the Python-dtiam tool and its dependencies.
 REM # 
 REM # Usage:
 REM #   install.bat
@@ -20,7 +20,7 @@ REM Green = 0A, Red = 0C, Yellow = 0E, Blue = 09
 
 echo.
 echo ========================================
-echo Python-IAM-CLI Installation
+echo Python-dtiam Installation
 echo ========================================
 echo.
 
@@ -149,6 +149,6 @@ echo ========================================
 echo.
 echo Next steps:
 echo - Run: dtiam --help
-echo - Documentation: https://github.com/timstewart-dynatrace/Python-IAM-CLI
+echo - Documentation: https://github.com/timstewart-dynatrace/Python-dtiam
 echo.
 pause

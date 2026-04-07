@@ -137,10 +137,19 @@ def create_binding(
     group: str = typer.Option(..., "--group", "-g", help="Group UUID"),
     policy: str = typer.Option(..., "--policy", "-p", help="Policy UUID"),
     boundary: str | None = typer.Option(None, "--boundary", "-b", help="Boundary UUID"),
+    param: list[str] = typer.Option([], "--param", help="Bind parameter in KEY=VALUE format (repeatable)"),
     output: OutputFormat | None = typer.Option(None, "-o", "--output"),
 ) -> None:
-    """Create a policy binding (bind a policy to a group)."""
+    """Create a policy binding (bind a policy to a group).
+
+    For parameterized policies using ${bindParam:name} placeholders,
+    provide parameter values with --param:
+
+        dtiam create binding --group GRP --policy POL --param sec_context=Production
+        dtiam create binding --group GRP --policy POL --param project=123 --param team=mobile
+    """
     from dtiam.resources.bindings import BindingHandler
+    from dtiam.utils.bind_params import parse_param_strings
 
     config = load_config()
     client = create_client_from_config(config, get_context(), is_verbose(), get_api_url())
@@ -151,16 +160,32 @@ def create_binding(
 
     boundaries = [boundary] if boundary else []
 
+    # Parse bind parameters
+    parameters: dict[str, str] | None = None
+    if param:
+        try:
+            parameters = parse_param_strings(param)
+        except ValueError as e:
+            console.print(f"[red]Error:[/red] {e}")
+            raise typer.Exit(1)
+
     if is_dry_run():
         console.print("[yellow]Dry-run mode:[/yellow] Would create binding:")
         console.print(f"  Group: {group}")
         console.print(f"  Policy: {policy}")
         if boundaries:
             console.print(f"  Boundaries: {', '.join(boundaries)}")
+        if parameters:
+            console.print(f"  Parameters: {parameters}")
         return
 
     try:
-        result = handler.create(group_uuid=group, policy_uuid=policy, boundaries=boundaries)
+        result = handler.create(
+            group_uuid=group,
+            policy_uuid=policy,
+            boundaries=boundaries,
+            parameters=parameters,
+        )
         console.print("[green]Created binding[/green]")
         printer.print(result)
     except Exception as e:

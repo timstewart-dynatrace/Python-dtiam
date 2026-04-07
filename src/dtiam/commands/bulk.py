@@ -420,6 +420,8 @@ def bulk_create_groups_with_policies(
         (pipe-separated for multiple zones, e.g., "Zone1|Zone2")
       - boundary_name (optional): Custom boundary name (default: {group}-Boundary)
       - description (optional): Group description
+      - parameters (optional): JSON-encoded bind parameters for parameterized policies
+        (e.g., '{"sec_context":"Production","project_id":"123"}')
 
     Notes:
       - Groups are created if they don't exist
@@ -531,7 +533,18 @@ def bulk_create_groups_with_policies(
                     else:
                         boundary_uuid = boundaries_created[boundary_key]
 
-                # Step 3: Resolve group and policy UUIDs
+                # Step 3: Parse bind parameters if provided
+                parameters_str = row.get('parameters', '').strip()
+                parameters = None
+                if parameters_str:
+                    try:
+                        parameters = json.loads(parameters_str)
+                    except json.JSONDecodeError:
+                        raise ValueError(f"Invalid JSON in parameters column: {parameters_str}")
+                    if not isinstance(parameters, dict):
+                        raise ValueError(f"Parameters must be a JSON object, got: {type(parameters).__name__}")
+
+                # Step 4: Resolve group and policy UUIDs
                 group = group_handler.get_by_name(group_name)
                 if not group:
                     raise ValueError(f"Group '{group_name}' not found")
@@ -542,7 +555,7 @@ def bulk_create_groups_with_policies(
                     raise ValueError(f"Policy '{policy_name}' not found")
                 policy_uuid = policy.get('uuid')
 
-                # Step 4: Create binding
+                # Step 5: Create binding
                 binding_data = {
                     "policyUuid": policy_uuid,
                     "groups": [group_uuid]
@@ -563,7 +576,8 @@ def bulk_create_groups_with_policies(
                     _, action = level_binding_handler.create_or_update(
                         group_uuid=group_uuid,
                         policy_uuid=policy_uuid,
-                        boundaries=[boundary_uuid] if boundary_uuid else None
+                        boundaries=[boundary_uuid] if boundary_uuid else None,
+                        parameters=parameters,
                     )
                     if action == "created":
                         console.print(f"[{i}/{len(records)}] [green]Bound:[/green] {policy_name} to {group_name} at {level_desc}")
@@ -615,6 +629,9 @@ def bulk_create_bindings(
         - group: "group-uuid-or-name"
           policy: "policy-uuid-or-name"
           boundary: "optional-boundary-uuid"  # optional
+          parameters:                          # optional bind parameters
+            sec_context: "Production"
+            project_id: "123"
         - group: "another-group"
           policy: "another-policy"
     """
@@ -696,10 +713,18 @@ def bulk_create_bindings(
                     if "boundary" in binding_def and binding_def["boundary"]:
                         boundaries = [binding_def["boundary"]]
 
+                    # Optional bind parameters
+                    parameters = binding_def.get("parameters")
+                    if parameters and not isinstance(parameters, dict):
+                        raise ValueError(
+                            f"Invalid parameters format: expected dict, got {type(parameters).__name__}"
+                        )
+
                     result = binding_handler.create(
                         group_uuid=group_uuid,
                         policy_uuid=policy_uuid,
                         boundaries=boundaries,
+                        parameters=parameters if parameters else None,
                     )
                     results["success"].append(f"{binding_def['group']} -> {binding_def['policy']}")
                 except Exception as e:
