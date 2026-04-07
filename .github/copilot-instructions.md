@@ -1,4 +1,4 @@
-# Copilot Instructions for Python-IAM-CLI
+# Copilot Instructions for Python-dtiam
 
 ## Project Overview
 

@@ -219,6 +219,24 @@ def describe_policy(
             if statement:
                 console.print("[bold]Statement Query:[/bold]")
                 console.print(Panel(statement, expand=False))
+
+                # Show bind parameters if the policy is parameterized
+                from dtiam.utils.bind_params import extract_bind_params
+
+                bind_params = extract_bind_params(statement)
+                if bind_params:
+                    console.print()
+                    console.print(f"[bold]Bind Parameters:[/bold] ({len(bind_params)} found)")
+                    for p in bind_params:
+                        console.print(f"  - ${{bindParam:{p}}}")
+                    console.print()
+                    param_example = " ".join(f"--param {p}=<value>" for p in bind_params)
+                    console.print(
+                        "[dim]Tip: When binding this policy, provide values with:[/dim]"
+                    )
+                    console.print(
+                        f"  [dim]dtiam create binding --group <GROUP> --policy <POLICY> {param_example}[/dim]"
+                    )
     finally:
         client.close()
 

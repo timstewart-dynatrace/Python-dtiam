@@ -187,6 +187,40 @@ def sample_bindings() -> list[dict[str, Any]]:
 
 
 @pytest.fixture
+def sample_bindings_with_params() -> list[dict[str, Any]]:
+    """Sample bindings with bind parameters."""
+    return [
+        {
+            "policyUuid": "policy-uuid-1",
+            "groups": ["group-uuid-1"],
+            "boundaries": [],
+            "parameters": {},
+        },
+        {
+            "policyUuid": "policy-uuid-2",
+            "groups": ["group-uuid-2"],
+            "boundaries": ["boundary-uuid-1"],
+            "parameters": {"sec_context": "Production", "project_id": "123"},
+        },
+    ]
+
+
+@pytest.fixture
+def sample_parameterized_policy() -> dict[str, Any]:
+    """Sample policy with bind parameters."""
+    return {
+        "uuid": "param-policy-uuid",
+        "name": "parameterized-policy",
+        "description": "Policy with bind parameters",
+        "statementQuery": (
+            "ALLOW storage:logs:read "
+            "WHERE storage:dt.security_context='${bindParam:sec_context}' "
+            "AND storage:gcp.project.id='${bindParam:project_id}';"
+        ),
+    }
+
+
+@pytest.fixture
 def sample_boundaries() -> list[dict[str, Any]]:
     """Sample boundaries response."""
     return [

@@ -1,6 +1,6 @@
 # GitHub Releases Distribution Guide
 
-This guide explains how to use GitHub Releases to distribute Python-IAM-CLI to users.
+This guide explains how to use GitHub Releases to distribute Python-dtiam to users.
 
 ## Overview
 
@@ -10,7 +10,7 @@ GitHub Releases provides a way to distribute your software with version control 
 
 ### Method 1: Download and Run Installation Script (Easiest)
 
-1. Go to your GitHub repository: https://github.com/timstewart-dynatrace/Python-IAM-CLI/releases
+1. Go to your GitHub repository: https://github.com/timstewart-dynatrace/Python-dtiam/releases
 2. Click on the latest release
 3. Download the `.zip` or `.tar.gz` source code archive
 4. Extract the archive
@@ -22,8 +22,8 @@ GitHub Releases provides a way to distribute your software with version control 
 
 ```bash
 # Clone the repository at a specific release tag
-git clone --branch v3.0.0 https://github.com/timstewart-dynatrace/Python-IAM-CLI.git
-cd Python-IAM-CLI
+git clone --branch v3.0.0 https://github.com/timstewart-dynatrace/Python-dtiam.git
+cd Python-dtiam
 ./install.sh  # macOS/Linux
 # or
 install.bat   # Windows
@@ -52,7 +52,7 @@ git push origin v3.0.0
 
 **Option A: Using GitHub Web Interface**
 
-1. Go to https://github.com/timstewart-dynatrace/Python-IAM-CLI/releases
+1. Go to https://github.com/timstewart-dynatrace/Python-dtiam/releases
 2. Click "Draft a new release"
 3. Select the tag you just created
 4. Enter release title: `v3.0.0`
@@ -96,7 +96,7 @@ When creating a release, use this template for clear, professional notes:
 
 ### Requirements
 - Python 3.10+
-- See [Installation Guide](https://github.com/timstewart-dynatrace/Python-IAM-CLI/blob/main/INSTALLATION.md)
+- See [Installation Guide](https://github.com/timstewart-dynatrace/Python-dtiam/blob/main/INSTALLATION.md)
 
 ## Installation
 
@@ -113,11 +113,11 @@ install.bat   # Windows
 pip install -e .
 ```
 
-See [INSTALLATION.md](https://github.com/timstewart-dynatrace/Python-IAM-CLI/blob/main/INSTALLATION.md) for detailed instructions.
+See [INSTALLATION.md](https://github.com/timstewart-dynatrace/Python-dtiam/blob/main/INSTALLATION.md) for detailed instructions.
 
 ## Changes
 
-See the [commit log](https://github.com/timstewart-dynatrace/Python-IAM-CLI/compare/v2.9.0...v3.0.0)
+See the [commit log](https://github.com/timstewart-dynatrace/Python-dtiam/compare/v2.9.0...v3.0.0)
 ```
 
 ## Versioning Scheme
@@ -140,9 +140,9 @@ Follow [Semantic Versioning](https://semver.org/):
 When you create a release on GitHub, it automatically provides:
 
 ```
-Python-IAM-CLI
-├── Python-IAM-CLI-v3.0.0.zip       (source code)
-├── Python-IAM-CLI-v3.0.0.tar.gz    (source code)
+Python-dtiam
+├── Python-dtiam-v3.0.0.zip       (source code)
+├── Python-dtiam-v3.0.0.tar.gz    (source code)
 └── [Release notes]
 ```
 
@@ -153,8 +153,8 @@ Users can download either format and run the installation scripts.
 Once you set up PyInstaller or similar tools, you can attach binary executables:
 
 ```
-Python-IAM-CLI-v3.0.0.dmg          # macOS
-Python-IAM-CLI-v3.0.0.exe          # Windows
+Python-dtiam-v3.0.0.dmg          # macOS
+Python-dtiam-v3.0.0.exe          # Windows
 python-iam-cli-v3.0.0.tar.gz       # Linux
 ```
 
@@ -186,7 +186,7 @@ When you have a stable release, you can point users to it:
 
 ```bash
 # Clone a specific release version
-git clone --branch v3.0.0 https://github.com/timstewart-dynatrace/Python-IAM-CLI.git
+git clone --branch v3.0.0 https://github.com/timstewart-dynatrace/Python-dtiam.git
 ```
 
 ## Troubleshooting
@@ -222,6 +222,6 @@ git clone --branch v3.0.0 https://github.com/timstewart-dynatrace/Python-IAM-CLI
 
 3. **Create a release** on GitHub web interface or CLI
 
-4. **Share the link** with users: `https://github.com/timstewart-dynatrace/Python-IAM-CLI/releases`
+4. **Share the link** with users: `https://github.com/timstewart-dynatrace/Python-dtiam/releases`
 
 Users can now download and install your tool directly from GitHub!

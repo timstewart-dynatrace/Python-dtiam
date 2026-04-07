@@ -344,10 +344,14 @@ def apply_template(
             if spec.get("boundary"):
                 boundaries = [spec["boundary"]]
 
+            # Optional bind parameters
+            parameters = spec.get("parameters")
+
             result = binding_handler.create(
                 group_uuid=group.get("uuid"),
                 policy_uuid=policy.get("uuid"),
                 boundaries=boundaries,
+                parameters=parameters if parameters else None,
             )
             console.print(f"[green]Created binding:[/green] {group.get('name')} -> {policy.get('name')}")
 
@@ -392,10 +396,12 @@ def apply_template(
                         continue
 
                     boundaries = [item_spec["boundary"]] if item_spec.get("boundary") else []
+                    parameters = item_spec.get("parameters")
                     result = binding_handler.create(
                         group_uuid=group.get("uuid"),
                         policy_uuid=policy.get("uuid"),
                         boundaries=boundaries,
+                        parameters=parameters if parameters else None,
                     )
                     console.print(f"[green]Created binding:[/green] {group.get('name')} -> {policy.get('name')}")
 

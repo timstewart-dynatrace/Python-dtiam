@@ -1,6 +1,6 @@
 # Installation Guide
 
-This guide explains how to install Python-IAM-CLI on different platforms.
+This guide explains how to install Python-dtiam on different platforms.
 
 ## Table of Contents
 
@@ -70,8 +70,8 @@ If you prefer to set up manually:
 
 ```bash
 # Clone or download the repository
-git clone https://github.com/timstewart-dynatrace/Python-IAM-CLI.git
-cd Python-IAM-CLI
+git clone https://github.com/timstewart-dynatrace/Python-dtiam.git
+cd Python-dtiam
 
 # Create a virtual environment
 python3 -m venv venv
@@ -89,8 +89,8 @@ pip install -e .
 
 ```bash
 # Clone or download the repository
-git clone https://github.com/timstewart-dynatrace/Python-IAM-CLI.git
-cd Python-IAM-CLI
+git clone https://github.com/timstewart-dynatrace/Python-dtiam.git
+cd Python-dtiam
 
 # Install the package system-wide
 pip install -e .
@@ -102,8 +102,8 @@ pip install -e .
 
 ```bash
 # Clone or download the repository
-git clone https://github.com/timstewart-dynatrace/Python-IAM-CLI.git
-cd Python-IAM-CLI
+git clone https://github.com/timstewart-dynatrace/Python-dtiam.git
+cd Python-dtiam
 
 # Install for current user only
 pip install --user -e .
@@ -174,7 +174,7 @@ pip install -e .
 
 ### Still having issues?
 
-Check the [GitHub Issues](https://github.com/timstewart-dynatrace/Python-IAM-CLI/issues) or create a new issue with:
+Check the [GitHub Issues](https://github.com/timstewart-dynatrace/Python-dtiam/issues) or create a new issue with:
 - Your OS and Python version (`python --version`)
 - The exact error message
 - Steps to reproduce
