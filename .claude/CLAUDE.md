@@ -28,6 +28,7 @@ Domain knowledge from the shared skills library:
 | [@dynatrace-iam](/Users/Shared/GitHub/PROJECTS/VisualCode-AI-Template/SKILLS/dynatrace-iam/SKILL.md) | IAM groups, policies, bindings, boundaries, management zones |
 | [@dynatrace-apis](/Users/Shared/GitHub/PROJECTS/VisualCode-AI-Template/SKILLS/dynatrace-apis/SKILL.md) | Settings v2, Entities v2, SDK clients, API patterns |
 | [@dynatrace-account-management](/Users/Shared/GitHub/PROJECTS/VisualCode-AI-Template/SKILLS/dynatrace-account-management/SKILL.md) | Environments, subscriptions, service users, platform tokens |
+| [@svg-graphics](/Users/Shared/GitHub/PROJECTS/VisualCode-AI-Template/SKILLS/svg-graphics/SKILL.md) | SVG diagrams (930x500, dark palette, Inter font) for README and user-facing docs |
 
 ## Quick Start
 
