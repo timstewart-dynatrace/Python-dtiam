@@ -4,6 +4,19 @@
 
 A kubectl-inspired command-line interface for managing Dynatrace Identity and Access Management resources.
 
+![Commands and Resources](images/command-hierarchy.svg)
+
+<!-- MARKDOWN_TABLE_ALTERNATIVE
+| Layer | Items |
+|-------|-------|
+| Core Verbs | get, describe, create, delete, apply |
+| Specialized Commands | bulk, template, analyze, export, boundary, config |
+| IAM Resources | groups, policies, bindings, boundaries, users, service-users, platform-tokens |
+| Account Resources | environments, subscriptions, limits, zones (legacy) |
+| Platform Resources | apps, schemas, cache |
+For environments where SVG does not render
+-->
+
 ## Features
 
 - **kubectl-style commands** - Familiar syntax: `get`, `describe`, `create`, `delete`, `apply`
@@ -36,6 +49,16 @@ See [INSTALLATION.md](./INSTALLATION.md) for detailed instructions and alternati
 ## Authentication
 
 dtiam supports two authentication methods. Choose based on your use case:
+
+![Authentication Flow](images/auth-flow.svg)
+
+<!-- MARKDOWN_TABLE_ALTERNATIVE
+| Method | Input | Behavior | Best For |
+|--------|-------|----------|----------|
+| OAuth2 (recommended) | DTIAM_CLIENT_SECRET | Auto-refreshes access token 30s before expiry via sso.dynatrace.com | Automation, CI/CD, long-running processes |
+| Bearer Token (static) | DTIAM_BEARER_TOKEN | No refresh — requests fail when token expires | Quick testing, one-off debugging only |
+For environments where SVG does not render
+-->
 
 ### Option 1: OAuth2 Client Credentials (Recommended)
 

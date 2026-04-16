@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.13.1] - 2026-04-16
+
+### Added
+- **SVG diagrams in README** - Architecture and authentication flow visuals
+  - `images/command-hierarchy.svg` - Tiered view of verbs, specialized commands, and resource categories (IAM / Account / Platform)
+  - `images/auth-flow.svg` - Side-by-side comparison of OAuth2 (auto-refresh) vs bearer token (static) auth paths
+  - Both diagrams follow the shared `svg-graphics` skill conventions (930x500 viewBox, dark palette, Inter font)
+  - `MARKDOWN_TABLE_ALTERNATIVE` fallbacks included for environments that strip images
+
+### Changed
+- `.claude/CLAUDE.md` now references the `svg-graphics` skill so future diagram work stays consistent with the shared library
+
 ## [3.13.0] - 2026-04-07
 
 ### Added

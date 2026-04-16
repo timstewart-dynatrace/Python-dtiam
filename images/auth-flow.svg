@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 930 500" font-family="Inter, system-ui, sans-serif">
+  <rect width="930" height="500" fill="#0F172A"/>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748B"/>
+    </marker>
+  </defs>
+
+  <text x="465" y="38" text-anchor="middle" fill="#F8FAFC" font-size="22" font-weight="700">Authentication Flow</text>
+  <text x="465" y="62" text-anchor="middle" fill="#94A3B8" font-size="13">OAuth2 for automation  -  Bearer token for quick testing</text>
+
+  <rect x="40" y="85" width="400" height="395" fill="#73BE28" opacity="0.08" stroke="#73BE28" stroke-width="1.5" rx="8"/>
+  <text x="240" y="112" text-anchor="middle" fill="#86EFAC" font-size="16" font-weight="700">OAuth2 (Recommended)</text>
+  <text x="240" y="131" text-anchor="middle" fill="#94A3B8" font-size="11">Auto-refresh  -  Best for automation</text>
+
+  <rect x="70" y="150" width="340" height="55" fill="#1E293B" stroke="#73BE28" rx="6"/>
+  <text x="240" y="173" text-anchor="middle" fill="#86EFAC" font-size="14" font-weight="700">DTIAM_CLIENT_SECRET</text>
+  <text x="240" y="192" text-anchor="middle" fill="#94A3B8" font-size="11">dt0s01.CLIENTID.SECRETPART</text>
+  <line x1="240" y1="205" x2="240" y2="230" stroke="#64748B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="70" y="235" width="340" height="55" fill="#1E293B" stroke="#73BE28" rx="6"/>
+  <text x="240" y="258" text-anchor="middle" fill="#86EFAC" font-size="14" font-weight="700">Token Endpoint</text>
+  <text x="240" y="277" text-anchor="middle" fill="#94A3B8" font-size="11">sso.dynatrace.com/sso/oauth2/token</text>
+  <line x1="240" y1="290" x2="240" y2="315" stroke="#64748B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="70" y="320" width="340" height="55" fill="#1E293B" stroke="#73BE28" rx="6"/>
+  <text x="240" y="343" text-anchor="middle" fill="#86EFAC" font-size="14" font-weight="700">Access Token</text>
+  <text x="240" y="362" text-anchor="middle" fill="#94A3B8" font-size="11">Refreshed 30s before expiry</text>
+  <line x1="240" y1="375" x2="240" y2="400" stroke="#64748B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="70" y="405" width="340" height="50" fill="#1E293B" stroke="#73BE28" stroke-width="2" rx="6"/>
+  <text x="240" y="427" text-anchor="middle" fill="#86EFAC" font-size="13" font-weight="700">Authenticated API Request</text>
+  <text x="240" y="445" text-anchor="middle" fill="#94A3B8" font-size="11">api.dynatrace.com/iam/v1</text>
+
+  <rect x="490" y="85" width="400" height="395" fill="#FFB800" opacity="0.08" stroke="#FFB800" stroke-width="1.5" rx="8"/>
+  <text x="690" y="112" text-anchor="middle" fill="#FCD34D" font-size="16" font-weight="700">Bearer Token (Static)</text>
+  <text x="690" y="131" text-anchor="middle" fill="#94A3B8" font-size="11">No refresh  -  Quick testing only</text>
+
+  <rect x="520" y="150" width="340" height="55" fill="#1E293B" stroke="#FFB800" rx="6"/>
+  <text x="690" y="173" text-anchor="middle" fill="#FCD34D" font-size="14" font-weight="700">DTIAM_BEARER_TOKEN</text>
+  <text x="690" y="192" text-anchor="middle" fill="#94A3B8" font-size="11">dt0c01.XXXXX.YYYYY</text>
+  <line x1="690" y1="205" x2="690" y2="230" stroke="#64748B" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrow)"/>
+
+  <rect x="520" y="235" width="340" height="140" fill="#1E293B" stroke="#DE350B" stroke-width="2" rx="6"/>
+  <text x="690" y="265" text-anchor="middle" fill="#FCA5A5" font-size="14" font-weight="700">No Auto-Refresh</text>
+  <text x="690" y="290" text-anchor="middle" fill="#94A3B8" font-size="11">Token expires - requests fail</text>
+  <text x="690" y="310" text-anchor="middle" fill="#94A3B8" font-size="11">Manual renewal required</text>
+  <text x="690" y="335" text-anchor="middle" fill="#FCA5A5" font-size="11" font-weight="600">Not suitable for automation</text>
+  <text x="690" y="355" text-anchor="middle" fill="#94A3B8" font-size="11">Use for one-off debugging only</text>
+  <line x1="690" y1="375" x2="690" y2="400" stroke="#64748B" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrow)"/>
+
+  <rect x="520" y="405" width="340" height="50" fill="#1E293B" stroke="#FFB800" stroke-width="2" rx="6"/>
+  <text x="690" y="427" text-anchor="middle" fill="#FCD34D" font-size="13" font-weight="700">Authenticated API Request</text>
+  <text x="690" y="445" text-anchor="middle" fill="#94A3B8" font-size="11">Until token expires</text>
+</svg>

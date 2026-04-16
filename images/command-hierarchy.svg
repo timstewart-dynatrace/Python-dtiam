@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 930 500" font-family="Inter, system-ui, sans-serif">
+  <rect width="930" height="500" fill="#0F172A"/>
+
+  <text x="465" y="38" text-anchor="middle" fill="#F8FAFC" font-size="22" font-weight="700">Commands &amp; Resources</text>
+  <text x="465" y="62" text-anchor="middle" fill="#94A3B8" font-size="13">kubectl-inspired: dtiam [VERB] [RESOURCE] [OPTIONS]</text>
+
+  <rect x="40" y="85" width="850" height="80" fill="#1496FF" opacity="0.08" stroke="#1496FF" stroke-width="1.5" rx="8"/>
+  <text x="60" y="108" fill="#BFDBFE" font-size="13" font-weight="700">Core Verbs</text>
+  <text x="60" y="124" fill="#94A3B8" font-size="10">Universal CRUD operations across all resources</text>
+
+  <rect x="180" y="98" width="130" height="55" fill="#1E293B" stroke="#1496FF" rx="6"/>
+  <text x="245" y="120" text-anchor="middle" fill="#BFDBFE" font-size="13" font-weight="700">get</text>
+  <text x="245" y="140" text-anchor="middle" fill="#94A3B8" font-size="10">list / retrieve</text>
+
+  <rect x="320" y="98" width="130" height="55" fill="#1E293B" stroke="#1496FF" rx="6"/>
+  <text x="385" y="120" text-anchor="middle" fill="#BFDBFE" font-size="13" font-weight="700">describe</text>
+  <text x="385" y="140" text-anchor="middle" fill="#94A3B8" font-size="10">details + related</text>
+
+  <rect x="460" y="98" width="130" height="55" fill="#1E293B" stroke="#1496FF" rx="6"/>
+  <text x="525" y="120" text-anchor="middle" fill="#BFDBFE" font-size="13" font-weight="700">create</text>
+  <text x="525" y="140" text-anchor="middle" fill="#94A3B8" font-size="10">new resource</text>
+
+  <rect x="600" y="98" width="130" height="55" fill="#1E293B" stroke="#1496FF" rx="6"/>
+  <text x="665" y="120" text-anchor="middle" fill="#BFDBFE" font-size="13" font-weight="700">delete</text>
+  <text x="665" y="140" text-anchor="middle" fill="#94A3B8" font-size="10">remove resource</text>
+
+  <rect x="740" y="98" width="130" height="55" fill="#1E293B" stroke="#1496FF" rx="6"/>
+  <text x="805" y="120" text-anchor="middle" fill="#BFDBFE" font-size="13" font-weight="700">apply</text>
+  <text x="805" y="140" text-anchor="middle" fill="#94A3B8" font-size="10">from manifest</text>
+
+  <rect x="40" y="180" width="850" height="80" fill="#A78BFA" opacity="0.08" stroke="#A78BFA" stroke-width="1.5" rx="8"/>
+  <text x="60" y="203" fill="#DDD6FE" font-size="13" font-weight="700">Specialized Commands</text>
+  <text x="60" y="219" fill="#94A3B8" font-size="10">Workflow, analysis, bulk operations</text>
+
+  <rect x="230" y="193" width="95" height="52" fill="#1E293B" stroke="#A78BFA" rx="6"/>
+  <text x="277" y="214" text-anchor="middle" fill="#DDD6FE" font-size="12" font-weight="700">bulk</text>
+  <text x="277" y="232" text-anchor="middle" fill="#94A3B8" font-size="10">CSV / YAML</text>
+
+  <rect x="335" y="193" width="95" height="52" fill="#1E293B" stroke="#A78BFA" rx="6"/>
+  <text x="382" y="214" text-anchor="middle" fill="#DDD6FE" font-size="12" font-weight="700">template</text>
+  <text x="382" y="232" text-anchor="middle" fill="#94A3B8" font-size="10">Jinja2 vars</text>
+
+  <rect x="440" y="193" width="95" height="52" fill="#1E293B" stroke="#A78BFA" rx="6"/>
+  <text x="487" y="214" text-anchor="middle" fill="#DDD6FE" font-size="12" font-weight="700">analyze</text>
+  <text x="487" y="232" text-anchor="middle" fill="#94A3B8" font-size="10">permissions</text>
+
+  <rect x="545" y="193" width="95" height="52" fill="#1E293B" stroke="#A78BFA" rx="6"/>
+  <text x="592" y="214" text-anchor="middle" fill="#DDD6FE" font-size="12" font-weight="700">export</text>
+  <text x="592" y="232" text-anchor="middle" fill="#94A3B8" font-size="10">backup data</text>
+
+  <rect x="650" y="193" width="95" height="52" fill="#1E293B" stroke="#A78BFA" rx="6"/>
+  <text x="697" y="214" text-anchor="middle" fill="#DDD6FE" font-size="12" font-weight="700">boundary</text>
+  <text x="697" y="232" text-anchor="middle" fill="#94A3B8" font-size="10">attach/detach</text>
+
+  <rect x="755" y="193" width="95" height="52" fill="#1E293B" stroke="#A78BFA" rx="6"/>
+  <text x="802" y="214" text-anchor="middle" fill="#DDD6FE" font-size="12" font-weight="700">config</text>
+  <text x="802" y="232" text-anchor="middle" fill="#94A3B8" font-size="10">contexts</text>
+
+  <text x="60" y="290" fill="#F8FAFC" font-size="13" font-weight="700">Resources</text>
+  <text x="60" y="305" fill="#94A3B8" font-size="10">Grouped by API domain</text>
+
+  <rect x="40" y="315" width="285" height="170" fill="#73BE28" opacity="0.08" stroke="#73BE28" stroke-width="1.5" rx="8"/>
+  <text x="182" y="337" text-anchor="middle" fill="#86EFAC" font-size="13" font-weight="700">IAM</text>
+
+  <rect x="55" y="347" width="125" height="26" fill="#1E293B" stroke="#73BE28" rx="4"/>
+  <text x="117" y="365" text-anchor="middle" fill="#86EFAC" font-size="11" font-weight="600">groups</text>
+
+  <rect x="185" y="347" width="125" height="26" fill="#1E293B" stroke="#73BE28" rx="4"/>
+  <text x="247" y="365" text-anchor="middle" fill="#86EFAC" font-size="11" font-weight="600">policies</text>
+
+  <rect x="55" y="378" width="125" height="26" fill="#1E293B" stroke="#73BE28" rx="4"/>
+  <text x="117" y="396" text-anchor="middle" fill="#86EFAC" font-size="11" font-weight="600">bindings</text>
+
+  <rect x="185" y="378" width="125" height="26" fill="#1E293B" stroke="#73BE28" rx="4"/>
+  <text x="247" y="396" text-anchor="middle" fill="#86EFAC" font-size="11" font-weight="600">boundaries</text>
+
+  <rect x="55" y="409" width="125" height="26" fill="#1E293B" stroke="#73BE28" rx="4"/>
+  <text x="117" y="427" text-anchor="middle" fill="#86EFAC" font-size="11" font-weight="600">users</text>
+
+  <rect x="185" y="409" width="125" height="26" fill="#1E293B" stroke="#73BE28" rx="4"/>
+  <text x="247" y="427" text-anchor="middle" fill="#86EFAC" font-size="11" font-weight="600">service-users</text>
+
+  <rect x="55" y="440" width="255" height="26" fill="#1E293B" stroke="#73BE28" rx="4"/>
+  <text x="182" y="458" text-anchor="middle" fill="#86EFAC" font-size="11" font-weight="600">platform-tokens</text>
+
+  <rect x="340" y="315" width="260" height="170" fill="#FFB800" opacity="0.08" stroke="#FFB800" stroke-width="1.5" rx="8"/>
+  <text x="470" y="337" text-anchor="middle" fill="#FCD34D" font-size="13" font-weight="700">Account</text>
+
+  <rect x="355" y="347" width="230" height="26" fill="#1E293B" stroke="#FFB800" rx="4"/>
+  <text x="470" y="365" text-anchor="middle" fill="#FCD34D" font-size="11" font-weight="600">environments</text>
+
+  <rect x="355" y="378" width="230" height="26" fill="#1E293B" stroke="#FFB800" rx="4"/>
+  <text x="470" y="396" text-anchor="middle" fill="#FCD34D" font-size="11" font-weight="600">subscriptions</text>
+
+  <rect x="355" y="409" width="230" height="26" fill="#1E293B" stroke="#FFB800" rx="4"/>
+  <text x="470" y="427" text-anchor="middle" fill="#FCD34D" font-size="11" font-weight="600">limits</text>
+
+  <rect x="355" y="440" width="230" height="26" fill="#1E293B" stroke="#FFB800" rx="4"/>
+  <text x="470" y="458" text-anchor="middle" fill="#FCD34D" font-size="11" font-weight="600">zones (legacy)</text>
+
+  <rect x="615" y="315" width="275" height="170" fill="#1496FF" opacity="0.08" stroke="#1496FF" stroke-width="1.5" rx="8"/>
+  <text x="752" y="337" text-anchor="middle" fill="#BFDBFE" font-size="13" font-weight="700">Platform</text>
+
+  <rect x="630" y="347" width="245" height="26" fill="#1E293B" stroke="#1496FF" rx="4"/>
+  <text x="752" y="365" text-anchor="middle" fill="#BFDBFE" font-size="11" font-weight="600">apps</text>
+
+  <rect x="630" y="378" width="245" height="26" fill="#1E293B" stroke="#1496FF" rx="4"/>
+  <text x="752" y="396" text-anchor="middle" fill="#BFDBFE" font-size="11" font-weight="600">schemas</text>
+
+  <rect x="630" y="409" width="245" height="26" fill="#1E293B" stroke="#1496FF" rx="4"/>
+  <text x="752" y="427" text-anchor="middle" fill="#BFDBFE" font-size="11" font-weight="600">cache</text>
+</svg>
