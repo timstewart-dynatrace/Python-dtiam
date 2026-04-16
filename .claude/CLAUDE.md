@@ -19,6 +19,16 @@ Detailed guidelines are in separate files:
 | [rules/configuration.md](rules/configuration.md) | Config file format, filtering, output formats |
 | [rules/troubleshooting.md](rules/troubleshooting.md) | Common issues and solutions |
 
+## Skills Reference
+
+Domain knowledge from the shared skills library:
+
+| Skill | Description |
+|-------|-------------|
+| [@dynatrace-iam](/Users/Shared/GitHub/PROJECTS/VisualCode-AI-Template/SKILLS/dynatrace-iam/SKILL.md) | IAM groups, policies, bindings, boundaries, management zones |
+| [@dynatrace-apis](/Users/Shared/GitHub/PROJECTS/VisualCode-AI-Template/SKILLS/dynatrace-apis/SKILL.md) | Settings v2, Entities v2, SDK clients, API patterns |
+| [@dynatrace-account-management](/Users/Shared/GitHub/PROJECTS/VisualCode-AI-Template/SKILLS/dynatrace-account-management/SKILL.md) | Environments, subscriptions, service users, platform tokens |
+
 ## Quick Start
 
 ```bash
