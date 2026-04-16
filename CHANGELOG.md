@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.13.2] - 2026-04-16
+
+### Added
+- **Architecture diagram** - `images/01-architecture_930x500.svg` referenced from `docs/ARCHITECTURE.md`
+  - Shows typer CLI layer → resource handlers → httpx client → three Dynatrace APIs (Account Management, Policy Repository, App Engine + Settings)
+- **Two-tier binding pattern diagram** - `images/02-two-tier-bindings_930x500.svg` referenced from `README.md`
+  - Visualizes the least-privilege IAM pattern: account-level read with no boundary + environment-level write scoped to a management zone
+- Both diagrams follow the `svg-graphics` skill's preferred `NN-descriptive-name_930x500.svg` naming and ship with `MARKDOWN_TABLE_ALTERNATIVE` fallbacks, bringing diagram parity with the Go `dtiam` sibling project
+
 ## [3.13.1] - 2026-04-16
 
 ### Added

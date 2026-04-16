@@ -8,6 +8,18 @@ Technical design and implementation details for dtiam.
 
 dtiam is a kubectl-inspired CLI for managing Dynatrace Identity and Access Management resources. It follows architectural patterns from the Python-dtctl project, using modern Python tooling and best practices.
 
+![dtiam architecture: typer CLI layer, resource handlers, httpx client with OAuth2, and three Dynatrace APIs](../images/01-architecture_930x500.svg)
+
+<!-- MARKDOWN_TABLE_ALTERNATIVE
+| Layer | Responsibility | Key Components |
+|-------|----------------|----------------|
+| CLI | Parse user input, hold global state | typer app, `get` / `describe` / `create` / `delete` / `analyze` / `bulk` / `apply` / `template` / `config`, flags `-c -o -v --plain --dry-run` |
+| Resource Handlers | Map verbs to REST calls, normalize errors | `ResourceHandler` / `CRUDHandler` base classes + typed implementations for groups, users, service-users, policies, bindings, boundaries, environments, subscriptions, tokens, apps, schemas |
+| HTTP Client + Auth | Sign, retry, and log requests | httpx client, `TokenManager` (OAuth2 refresh), bearer-token path, exponential backoff on 429/5xx, in-memory cache |
+| APIs | Dynatrace platform surfaces | Account Management (`/iam/v1/accounts/{uuid}`), Policy Repository (`/iam/v1/repo/{level}/{id}`), App Engine + Settings (`{tenant}.apps.dynatrace.com`) |
+For environments where SVG does not render
+-->
+
 ## Technology Stack
 
 | Component | Library | Purpose |
